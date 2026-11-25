@@ -1,0 +1,22 @@
+# ZentrixOS desktop package selection (Debian live-build)
+# Keep this list lean; validate package availability on Debian 13.
+
+# Desktop and login
+kde-plasma-desktop
+sddm
+konsole
+dolphin
+systemsettings
+
+# Networking and hardware support
+network-manager
+firmware-linux
+firmware-linux-nonfree
+firmware-misc-nonfree
+
+# Everyday utilities
+firefox-esr
+ark
+kate
+sudo
+vim-tiny
