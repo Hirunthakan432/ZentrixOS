@@ -48,10 +48,10 @@ cd ZentrixOS
 Run the build script:
 
 ```bash
-sudo ./scripts/build-iso.sh
+sudo bash ./scripts/build-iso.sh
 ```
 
-The generated ISO will be placed in the repository's `artifacts/` directory. The first build downloads Debian packages and may take some time.
+The generated ISO will be placed in the repository's `artifacts/` directory. Build output is created in a temporary directory, leaving your tracked source configuration untouched. The first build downloads Debian packages and may take some time.
 
 ## Test with QEMU
 
