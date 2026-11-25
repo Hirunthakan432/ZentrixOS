@@ -1,0 +1,21 @@
+# Generated live-build output
+.chroot/
+chroot/
+binary/
+cache/
+config/binary
+config/bootstrap
+config/chroot
+config/common
+config/source
+config/package-lists/*.list.chroot
+config/includes.chroot/
+config/hooks/
+config/archives/
+config/bootloaders/
+config/apt/
+config/installer/
+*.iso
+*.img
+*.log
+artifacts/
