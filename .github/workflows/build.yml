@@ -1,0 +1,51 @@
+name: Build ZentrixOS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    container:
+      image: debian:trixie
+      options: --privileged
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            live-build \
+            debootstrap \
+            xorriso \
+            squashfs-tools \
+            dosfstools \
+            grub-pc-bin \
+            grub-efi-amd64-bin \
+            git \
+            file \
+            ca-certificates
+
+      - name: Configure ZentrixOS
+        run: |
+          chmod +x auto/config
+          ./auto/config
+          lb config --validate
+
+      - name: Build ISO
+        run: lb build
+
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: ZentrixOS-0.1-ISO
+          path: "*.iso"
+          if-no-files-found: error
+          retention-days: 14
