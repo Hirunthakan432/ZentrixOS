@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+lb config noauto \
+  --mode debian \
+  --distribution trixie \
+  --architecture amd64 \
+  --binary-image iso-hybrid \
+  --archive-areas "main contrib non-free non-free-firmware" \
+  --debian-installer none \
+  --initsystem systemd \
+  --image-name zentrixos \
+  --iso-volume ZENTRIXOS_0_1 \
+  --iso-application ZentrixOS \
+  --iso-publisher "ZentrixOS Project" \
+  --firmware-chroot true \
+  --bootappend-live "boot=live components"
